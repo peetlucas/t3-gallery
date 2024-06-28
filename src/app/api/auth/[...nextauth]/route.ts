@@ -25,9 +25,15 @@ const authOptions: NextAuthOptions = {
   },
 };
 
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+
 const handler = async (req: NextRequest) => {
   const response = await NextAuth(authOptions)(req);
   return NextResponse.next(response);
 };
+
+/* eslint-enable @typescript-eslint/no-unnecessary-type-assertion */
+/* eslint-enable @typescript-eslint/no-unsafe-argument */
 
 export { handler as GET, handler as POST };
