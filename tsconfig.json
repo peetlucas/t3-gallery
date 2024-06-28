@@ -25,6 +25,7 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
+      "@/env": ["src/env.js"],
       "~/*": ["./src/*"]
     },
 
