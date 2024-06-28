@@ -27,7 +27,7 @@ const authOptions: NextAuthOptions = {
 
 const handler = async (req: NextRequest) => {
   const response = await NextAuth(authOptions)(req);
-  return NextResponse.next(response as unknown as undefined);
+  return NextResponse.next(response);
 };
 
 export { handler as GET, handler as POST };
