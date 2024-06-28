@@ -3,7 +3,8 @@ import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
 import { env } from '@/env';
-import { NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
@@ -26,7 +27,7 @@ const authOptions: NextAuthOptions = {
 
 const handler = async (req: NextRequest) => {
   const response = await NextAuth(authOptions)(req);
-  return NextResponse.next(response);
+  return NextResponse.next(response as unknown as undefined);
 };
 
 export { handler as GET, handler as POST };
