@@ -3,6 +3,17 @@ import "~/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import SessionProviderWrapper from "./components/SessionProviderWrapper";
+import { getSession } from "next-auth/react";
+import Header from "./components/Header";
+import "~/styles/globals.css";
+
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata = {
   title: "Create T3 App",
@@ -10,15 +21,21 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className={`font-sans ${inter.variable} flex-col gap-4`}>
+        <SessionProviderWrapper session={session}>
+          <TRPCReactProvider>
+            <Header />
+            {children}
+          </TRPCReactProvider>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
