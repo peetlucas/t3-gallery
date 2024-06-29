@@ -6,10 +6,14 @@ import { getSession } from "next-auth/react";
 import SessionProviderWrapper from "./components/SessionProviderWrapper";
 import InteractiveButton from "./components/InteractiveButton";
 import { getProviders } from "next-auth/react";
+import { db } from "~/server/db";
+import prisma from "../../lib/prisma";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
   const session = await getSession();
+  const posts = await prisma.post.findMany();
+  console.log(posts);
 
   const mockUrls = [
     "https://uploadthing-prod-sea1.s3.us-west-2.amazonaws.com/3012c68d-d895-4c4d-8e3f-52c3fcd482dc-qorhd7.jpg",
@@ -28,8 +32,11 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-wrap items-center justify-center gap-4 px-4 py-16">
-        {mockImages.map((image) => (
-          <div key={image.id} className="w-48">
+        {posts.map((post) => (
+          <div key={post.id}>{post.imageUrl}</div>
+        ))}
+        {mockImages.map((image, index) => (
+          <div key={image.id + "-" + index} className="w-48">
             <img src={image.url} />
           </div>
         ))}
