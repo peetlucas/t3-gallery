@@ -2,6 +2,7 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
 import { getMyImages } from "~/server/queries";
+import { CreatePost } from "~/components/CreatePost";
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +39,7 @@ export default async function Home() {
           </div>
         </SignedOut>
         <SignedIn>
+          <CreatePost />
           <Images />
         </SignedIn>
       </div>
