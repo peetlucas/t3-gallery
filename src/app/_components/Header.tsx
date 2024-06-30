@@ -2,7 +2,7 @@
 
 // import { signIn, signOut, useSession } from "next-auth/react";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-// import { SimpleUploadButton } from "./simple-upload-button";
+import { SimpleUploadButton } from "./simple-upload-button";
 
 export default function Header() {
   // const { data: session } = useSession();
@@ -16,7 +16,7 @@ export default function Header() {
             <SignInButton />
           </SignedOut>
           <SignedIn>
-            {/* <SimpleUploadButton /> */}
+            <SimpleUploadButton />
             <UserButton />
           </SignedIn>
         </div>
