@@ -28,6 +28,7 @@
     "@trpc/react-query": "next",
     "@trpc/server": "next",
     "@uploadthing/react": "^6.7.2",
+    "@upstash/ratelimit": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "geist": "^1.3.0",
