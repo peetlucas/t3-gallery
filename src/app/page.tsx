@@ -1,15 +1,12 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
-import prisma from "../../lib/prisma";
+import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
 async function Images() {
-  const images = await prisma.post.findMany({
-    orderBy: { createdAt: "desc" },
-  });
-  // const images = await getMyImages();
+  const images = await getMyImages();
 
   return (
     <div className="flex flex-wrap justify-center gap-4 p-4">
