@@ -46,7 +46,7 @@ export default async function RootLayout({
              */
             routerConfig={extractRouterConfig(ourFileRouter)}
           />
-          <body className={`font-sans ${inter.variable} flex-col gap-4`}>
+          <body className={`font-sans ${inter.variable} dark flex-col gap-4`}>
             <TRPCReactProvider>
               <div className="grid h-screen grid-rows-[auto,1fr]">
                 <Header />
