@@ -11,7 +11,7 @@ export default function Header() {
     <header>
       <nav className="flex w-full items-center justify-between border-b text-lg font-semibold">
         <div> Gallery </div>
-        <div>
+        <div className="flex flex-row items-center gap-4">
           <SignedOut>
             <SignInButton />
           </SignedOut>

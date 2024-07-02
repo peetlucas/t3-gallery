@@ -19,7 +19,7 @@ export function CreatePost() {
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!session.isSignedIn) return;
 

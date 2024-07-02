@@ -13,6 +13,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Ensure the user exists in the database via the API route
+  await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ensureUserExists`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userId: user.userId }),
+  });
+
   const { postId }: LikeData = await request.json() as LikeData;
   const existingLike = await prisma.like.findUnique({
     where: { postId_userId: { postId, userId: user.userId } },

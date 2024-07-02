@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getMyImages } from "~/server/queries";
 import { CreatePost } from "~/components/CreatePost";
+import ClientOnlyComponent from "~/components/ClientOnlyComponent";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,7 @@ async function Images() {
 export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+      {/* <ClientOnlyComponent /> */}
       <div className="container flex flex-wrap items-center justify-center gap-4 px-4 py-16">
         <SignedOut>
           <div className="h-full w-full text-center text-2xl">
